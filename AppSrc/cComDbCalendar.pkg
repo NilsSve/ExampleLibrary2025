@@ -1,0 +1,37 @@
+﻿// Visual DataFlex COM proxy classes generated from C:\Program Files\Visual DataFlex 11.1\Bin\MSCal.ocx
+Use FlexCom20.pkg
+Use cComDbActiveXControl.pkg
+
+Use cComCalendar.pkg // Use mixins from calendar so both db and non-db can be used in one application
+                     // note we removed the mixins cComICalendar and cComDCalendarEvents from here.
+
+// CoClass
+// ProgID: MSCAL.Calendar.7
+// CLSID: {8E27C92B-1264-101C-8A2F-040224009C02}
+// Calendar control
+{ CLSID="{8E27C92B-1264-101C-8A2F-040224009C02}" }
+Class cComDbCalendar is a cComDbActiveXControl
+    Import_Class_Protocol cComICalendar
+    Import_Class_Protocol cComDCalendarEvents
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{8E27C92B-1264-101C-8A2F-040224009C02}"
+        Set psEventId to "{8E27C92D-1264-101C-8A2F-040224009C02}"
+        Set peAutoCreate to acDeferredAutoCreate
+        //Connect the default bindable property
+        Send RegisterPropertyChangeEvent 12 msg_OnControlValueChanged
+    End_Procedure
+
+    Function ControlValue Returns String
+        //Associate the default bindable property with Get Value
+        String retVal
+        Get ComValue to retVal
+        Function_Return retVal
+    End_Function
+
+    Procedure Set ControlValue String sVal
+        //Associate the default bindable property with Set Value
+        Set ComValue to sVal
+    End_Procedure
+End_Class

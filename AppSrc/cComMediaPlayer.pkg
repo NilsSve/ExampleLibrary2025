@@ -1,0 +1,4572 @@
+﻿// Visual DataFlex COM proxy classes generated from C:\WINDOWS\System32\msdxm.ocx
+Use FlexCom20.pkg
+
+
+// ActiveMovie Readiness State
+Define OLEReadyStateConstants for Integer
+    // ActiveMovie is uninitialized
+    Define OLEamvUninitialized for 0
+    // ActiveMovie is loading
+    Define OLEamvLoading for 1
+    // ActiveMovie is not fully loaded, but will permit limited user interaction
+    Define OLEamvInteractive for 3
+    // ActiveMovie is fully loaded, permitting full user interaction
+    Define OLEamvComplete for 4
+
+// State of playback
+Define OLEMPPlayStateConstants for Integer
+    // Playback is stopped
+    Define OLEmpStopped for 0
+    // Playback is paused
+    Define OLEmpPaused for 1
+    // Stream is playing
+    Define OLEmpPlaying for 2
+    // Waiting for stream to begin
+    Define OLEmpWaiting for 3
+    // Stream is Scanning forward
+    Define OLEmpScanForward for 4
+    // Stream is Scanning in reverse
+    Define OLEmpScanReverse for 5
+    // Stream has not been opened
+    Define OLEmpClosed for 6
+
+// Media Information Display Size type
+Define OLEMPDisplaySizeConstants for Integer
+    // 0 - Default Size
+    Define OLEmpDefaultSize for 0
+    // 1 - Half Size
+    Define OLEmpHalfSize for 1
+    // 2 - Double Size
+    Define OLEmpDoubleSize for 2
+    // 3 - Full Screen
+    Define OLEmpFullScreen for 3
+    // 4 - Fit to Size
+    Define OLEmpFitToSize for 4
+    // 5 - One Sixteenth Screen
+    Define OLEmpOneSixteenthScreen for 5
+    // 6 - One Fourth Screen
+    Define OLEmpOneFourthScreen for 6
+    // 7 - One Half Screen
+    Define OLEmpOneHalfScreen for 7
+
+// Readiness State
+Define OLEMPReadyStateConstants for Integer
+    // 0 - Uninitialized
+    Define OLEmpReadyStateUninitialized for 0
+    // 1 - Loading
+    Define OLEmpReadyStateLoading for 1
+    // 3 - Interactive
+    Define OLEmpReadyStateInteractive for 3
+    // 4 - Complete
+    Define OLEmpReadyStateComplete for 4
+
+// MediaPlayer Display Mode
+Define OLEMPDisplayModeConstants for Integer
+    // Time
+    Define OLEmpTime for 0
+    // Frames
+    Define OLEmpFrames for 1
+
+// More Information URL type
+Define OLEMPMoreInfoType for Integer
+    // More Information URL for Show
+    Define OLEmpShowURL for 0
+    // More Information URL for Clip
+    Define OLEmpClipURL for 1
+    // More Information URL for Banner
+    Define OLEmpBannerURL for 2
+
+// Media Information String type
+Define OLEMPMediaInfoType for Integer
+    // Show filename
+    Define OLEmpShowFilename for 0
+    // Show Title
+    Define OLEmpShowTitle for 1
+    // Show Author
+    Define OLEmpShowAuthor for 2
+    // Show Copyright
+    Define OLEmpShowCopyright for 3
+    // Show Rating
+    Define OLEmpShowRating for 4
+    // Show Description
+    Define OLEmpShowDescription for 5
+    // Show Logo Icon
+    Define OLEmpShowLogoIcon for 6
+    // Clip filename
+    Define OLEmpClipFilename for 7
+    // Clip Title
+    Define OLEmpClipTitle for 8
+    // Clip Author
+    Define OLEmpClipAuthor for 9
+    // Clip Copyright
+    Define OLEmpClipCopyright for 10
+    // Clip Rating
+    Define OLEmpClipRating for 11
+    // Clip Description
+    Define OLEmpClipDescription for 12
+    // Clip Logo Icon
+    Define OLEmpClipLogoIcon for 13
+    // Current Banner Image
+    Define OLEmpBannerImage for 14
+    // Current Banner MoreInfo
+    Define OLEmpBannerMoreInfo for 15
+    // Current Watermark
+    Define OLEmpWatermark for 16
+
+// Show Dialog Constants
+Define OLEMPShowDialogConstants for Integer
+    // 0 - Help
+    Define OLEmpShowDialogHelp for 0
+    // 1 - Statistics
+    Define OLEmpShowDialogStatistics for 1
+    // 2 - Options
+    Define OLEmpShowDialogOptions for 2
+    // 3 - Context Menu
+    Define OLEmpShowDialogContextMenu for 3
+
+// DVD Menu ID constants
+Define OLEDVDMenuIDConstants for Integer
+    // title from any VTS in a DVD-Video volume
+    Define OLEdvdMenu_Title for 2
+    // main menu for a specific VTS
+    Define OLEdvdMenu_Root for 3
+    // subpicture stream in a VTS
+    Define OLEdvdMenu_Subpicture for 4
+    // audio stream in a VTS
+    Define OLEdvdMenu_Audio for 5
+    // angle num in a VTS
+    Define OLEdvdMenu_Angle for 6
+    // chapter in a VTS
+    Define OLEdvdMenu_Chapter for 7
+
+Define VB_OLE_COLOR for UInteger
+
+// CLSID: {39A2C2A5-4778-11D2-9BDB-204C4F4F5020}
+// IDirectControl Interface
+Class cComIDirectControl is a Mixin
+
+    Procedure ComCreateView String llbszClsid
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llbszClsid
+        Send InvokeComMethod to hDispatchDriver 1610743808 OLE_VT_VOID
+    End_Procedure
+
+    Procedure ComDestroyAllViews
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 1610743809 OLE_VT_VOID
+    End_Procedure
+End_Class
+
+// _IDirectControlEvents Interface
+Class cCom_IDirectControlEvents is a Mixin
+
+    Procedure RegisterComEvents
+    End_Procedure
+End_Class
+
+// CoClass
+// ProgID: DirectFrame.DirectControl.1
+// CLSID: {39A2C2A6-4778-11D2-9BDB-204C4F4F5020}
+// DirectControl Class
+Class cComDirectControl is a cComAutomationObject
+    Import_Class_Protocol cComIDirectControl
+    Import_Class_Protocol cCom_IDirectControlEvents
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{39A2C2A6-4778-11D2-9BDB-204C4F4F5020}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CLSID: {39A2C2A8-4778-11D2-9BDB-204C4F4F5020}
+// IDirectContainer Interface
+Class cComIDirectContainer is a Mixin
+
+    Function ComCreateControl String llbszClsid UInteger lldwClsContext Variant llppunk UInteger lldwWindowStyle Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 4
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llbszClsid
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 lldwClsContext
+        Send DefineParam to hDispatchDriver OLE_VT_UNKNOWN llppunk
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 lldwWindowStyle
+        Get InvokeComMethod of hDispatchDriver 1610678272 OLE_VT_HRESULT to retVal
+        Function_Return retVal
+    End_Function
+
+    Function ComSetServiceProvider Variant llpspSet Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_UNKNOWN llpspSet
+        Get InvokeComMethod of hDispatchDriver 1610678273 OLE_VT_HRESULT to retVal
+        Function_Return retVal
+    End_Function
+
+    Function ComSetIInputObjectSite Variant llpios Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_UNKNOWN llpios
+        Get InvokeComMethod of hDispatchDriver 1610678274 OLE_VT_HRESULT to retVal
+        Function_Return retVal
+    End_Function
+
+    Function ComShowControl Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1610678275 OLE_VT_HRESULT to retVal
+        Function_Return retVal
+    End_Function
+
+    Function ComHideControl Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1610678276 OLE_VT_HRESULT to retVal
+        Function_Return retVal
+    End_Function
+
+    Function ComIsControlCreated Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1610678277 OLE_VT_HRESULT to retVal
+        Function_Return retVal
+    End_Function
+
+    Function ComDestroyControl Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1610678278 OLE_VT_HRESULT to retVal
+        Function_Return retVal
+    End_Function
+End_Class
+
+// _IDirectContainerEvents Interface
+Class cCom_IDirectContainerEvents is a Mixin
+
+    Procedure RegisterComEvents
+    End_Procedure
+End_Class
+
+// CoClass
+// ProgID: DirectFrame.DirectContainer.1
+// CLSID: {39A2C2A9-4778-11D2-9BDB-204C4F4F5020}
+// DirectContainer Class
+Class cComDirectContainer is a cComAutomationObject
+    Import_Class_Protocol cComIDirectContainer
+    Import_Class_Protocol cCom_IDirectContainerEvents
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{39A2C2A9-4778-11D2-9BDB-204C4F4F5020}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CLSID: {847B4DF4-4B61-11D2-9BDB-204C4F4F5020}
+// IRadioView Interface
+Class cComIRadioView is a Mixin
+End_Class
+
+// _IRadioViewEvents Interface
+Class cCom_IRadioViewEvents is a Mixin
+
+    Procedure RegisterComEvents
+    End_Procedure
+End_Class
+
+// CoClass
+// ProgID: DirectFrame.RadioView.1
+// CLSID: {847B4DF5-4B61-11D2-9BDB-204C4F4F5020}
+// RadioView Class
+Class cComRadioView is a cComAutomationObject
+    Import_Class_Protocol cComIRadioView
+    Import_Class_Protocol cCom_IRadioViewEvents
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{847B4DF5-4B61-11D2-9BDB-204C4F4F5020}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CLSID: {20D4F5E0-5475-11D2-9774-0000F80855E6}
+// IMediaPlayer2 Interface
+Class cComIMediaPlayer2 is a Mixin
+
+    // Returns or sets the current position in the file
+    Function ComCurrentPosition Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1027 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current position in the file
+    Procedure Set ComCurrentPosition Real value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1027 OLE_VT_R8 to value
+    End_Procedure
+
+    // Returns the play duration of the file
+    Function ComDuration Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1003 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the original width of the source images
+    Function ComImageSourceWidth Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1001 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the original height of the source images
+    Function ComImageSourceHeight Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1002 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the number of markers in the file
+    Function ComMarkerCount Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1010 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns whether or not the file can be fast forwarded or reversed
+    Function ComCanScan Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1011 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns whether or not the file can be seeked into
+    Function ComCanSeek Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1012 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns whether or not the file can be seeked into by markers
+    Function ComCanSeekToMarkers Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1047 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current marker number
+    Function ComCurrentMarker Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1029 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current marker number
+    Procedure Set ComCurrentMarker Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1029 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets the current file name and path
+    Function ComFileName Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1026 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current file name and path
+    Procedure Set ComFileName String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1026 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns the source path of the file
+    Function ComSourceLink Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1009 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the creation date of the file
+    Function ComCreationDate Returns DateTime
+        Handle hDispatchDriver
+        DateTime retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1036 OLE_VT_DATE to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the error correction type of the file
+    Function ComErrorCorrection Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1038 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the bandwidth of the file in bits per second
+    Function ComBandwidth Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1037 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the protocol used to receive data
+    Function ComSourceProtocol Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1060 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the number of packets received
+    Function ComReceivedPackets Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1039 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the number of packets recovered
+    Function ComRecoveredPackets Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1040 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the number of packets lost
+    Function ComLostPackets Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1041 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the percentage of packets received in the last 30 seconds
+    Function ComReceptionQuality Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1042 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the number of times buffering occurred during playback
+    Function ComBufferingCount Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1043 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns whether or not the source is a broadcast
+    Function ComIsBroadcast Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1058 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the percentage of buffering completed
+    Function ComBufferingProgress Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1080 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the name of the station
+    Function ComChannelName Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1050 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the description of the station
+    Function ComChannelDescription Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1051 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the location of the station metafile
+    Function ComChannelURL Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1052 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the contact address of the station
+    Function ComContactAddress Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1053 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the contact phone number of the station
+    Function ComContactPhone Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1054 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the contact e-mail address of the station
+    Function ComContactEmail Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1055 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the control's buffering time
+    Function ComBufferingTime Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1070 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the control's buffering time
+    Procedure Set ComBufferingTime Real value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1070 OLE_VT_R8 to value
+    End_Procedure
+
+    // Returns or sets whether or not file playback is automatically started
+    Function ComAutoStart Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1017 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not file playback is automatically started
+    Procedure Set ComAutoStart Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1017 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not a file is rewound at the end of playback
+    Function ComAutoRewind Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1018 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not a file is rewound at the end of playback
+    Procedure Set ComAutoRewind Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1018 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the current playback rate
+    Function ComRate Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1028 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current playback rate
+    Procedure Set ComRate Real value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1028 OLE_VT_R8 to value
+    End_Procedure
+
+    // Returns or sets whether or not the control sends keyboard events
+    Function ComSendKeyboardEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1013 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends keyboard events
+    Procedure Set ComSendKeyboardEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1013 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not the control sends mouse click events
+    Function ComSendMouseClickEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1014 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends mouse click events
+    Procedure Set ComSendMouseClickEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1014 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not the control sends mouse move events
+    Function ComSendMouseMoveEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1015 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends mouse move events
+    Procedure Set ComSendMouseMoveEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1015 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the number of times a file plays
+    Function ComPlayCount Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1030 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the number of times a file plays
+    Procedure Set ComPlayCount Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1030 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets whether or not clicking on the control starts file playback
+    Function ComClickToPlay Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1025 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not clicking on the control starts file playback
+    Procedure Set ComClickToPlay Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1025 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not scanning is enabled on files that support it
+    Function ComAllowScan Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1035 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not scanning is enabled on files that support it
+    Procedure Set ComAllowScan Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1035 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not a right mouse click invokes a context menu
+    Function ComEnableContextMenu Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1021 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not a right mouse click invokes a context menu
+    Procedure Set ComEnableContextMenu Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1021 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the cursor type
+    Function ComCursorType Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1044 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the cursor type
+    Procedure Set ComCursorType Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1044 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns the number of installable codecs used by the file
+    Function ComCodecCount Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1057 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the display size can be set at run time
+    Function ComAllowChangeDisplaySize Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1056 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the display size can be set at run time
+    Procedure Set ComAllowChangeDisplaySize Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1056 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns whether or not the duration is known
+    Function ComIsDurationValid Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1059 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the open state of the control
+    Function ComOpenState Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1061 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends OpenStateChange events
+    Function ComSendOpenStateChangeEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1062 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends OpenStateChange events
+    Procedure Set ComSendOpenStateChangeEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1062 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not the control sends Warning events
+    Function ComSendWarningEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1063 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends Warning events
+    Procedure Set ComSendWarningEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1063 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not the control sends Error events
+    Function ComSendErrorEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1064 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends Error events
+    Procedure Set ComSendErrorEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1064 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns the play state of the control
+    Function ComPlayState Returns OLEMPPlayStateConstants
+        Handle hDispatchDriver
+        OLEMPPlayStateConstants retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1068 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends PlayStateChange events
+    Function ComSendPlayStateChangeEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1069 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends PlayStateChange events
+    Procedure Set ComSendPlayStateChangeEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1069 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the display size of images
+    Function ComDisplaySize Returns OLEMPDisplaySizeConstants
+        Handle hDispatchDriver
+        OLEMPDisplaySizeConstants retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1032 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the display size of images
+    Procedure Set ComDisplaySize OLEMPDisplaySizeConstants value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1032 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets whether or not received URLs are automatically invoked
+    Function ComInvokeURLs Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1020 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not received URLs are automatically invoked
+    Procedure Set ComInvokeURLs Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1020 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the control's base HTTP URL
+    Function ComBaseURL Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1082 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the control's base HTTP URL
+    Procedure Set ComBaseURL String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1082 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns or sets the control's default target HTTP frame
+    Function ComDefaultFrame Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1083 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the control's default target HTTP frame
+    Procedure Set ComDefaultFrame String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1083 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns whether or not the control currently has an error
+    Function ComHasError Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1065 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the description of the current error state
+    Function ComErrorDescription Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1066 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the current error code
+    Function ComErrorCode Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1067 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control shows its animation during initial file buffering
+    Function ComAnimationAtStart Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1045 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control shows its animation during initial file buffering
+    Procedure Set ComAnimationAtStart Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1045 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not the control is transparent before playing
+    Function ComTransparentAtStart Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1022 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control is transparent before playing
+    Procedure Set ComTransparentAtStart Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1022 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the current volume of the stream
+    Function ComVolume Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 19 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current volume of the stream
+    Procedure Set ComVolume Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 19 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets the current balance of the stream
+    Function ComBalance Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 20 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current balance of the stream
+    Procedure Set ComBalance Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 20 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns the readiness state of the control
+    Function ComReadyState Returns OLEMPReadyStateConstants
+        Handle hDispatchDriver
+        OLEMPReadyStateConstants retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver -525 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the position where playback will begin
+    Function ComSelectionStart Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 15 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the position where playback will begin
+    Procedure Set ComSelectionStart Real value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 15 OLE_VT_R8 to value
+    End_Procedure
+
+    // Returns or sets the position where playback will stop
+    Function ComSelectionEnd Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 16 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the position where playback will stop
+    Procedure Set ComSelectionEnd Real value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 16 OLE_VT_R8 to value
+    End_Procedure
+
+    // Shows or hides the display panel
+    Function ComShowDisplay Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 22 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Shows or hides the display panel
+    Procedure Set ComShowDisplay Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 22 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Shows or hides the control panel
+    Function ComShowControls Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 23 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Shows or hides the control panel
+    Procedure Set ComShowControls Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 23 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Shows or hides the position buttons in the control panel
+    Function ComShowPositionControls Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 24 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Shows or hides the position buttons in the control panel
+    Procedure Set ComShowPositionControls Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 24 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Shows or hides the tracker bar in the control panel
+    Function ComShowTracker Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 26 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Shows or hides the tracker bar in the control panel
+    Procedure Set ComShowTracker Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 26 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Enables or disables the position buttons in the control panel
+    Function ComEnablePositionControls Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 27 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Enables or disables the position buttons in the control panel
+    Procedure Set ComEnablePositionControls Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 27 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Enables or disables the tracker bar in the control panel
+    Function ComEnableTracker Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 29 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Enables or disables the tracker bar in the control panel
+    Procedure Set ComEnableTracker Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 29 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Enables or disables the control
+    Function ComEnabled Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver -514 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Enables or disables the control
+    Procedure Set ComEnabled Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver -514 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the foreground color of the display panel
+    Function ComDisplayForeColor Returns VB_OLE_COLOR
+        Handle hDispatchDriver
+        VB_OLE_COLOR retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 36 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the foreground color of the display panel
+    Procedure Set ComDisplayForeColor VB_OLE_COLOR value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 36 OLE_VT_UI4 to value
+    End_Procedure
+
+    // Returns or sets the background color of the display panel
+    Function ComDisplayBackColor Returns VB_OLE_COLOR
+        Handle hDispatchDriver
+        VB_OLE_COLOR retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 37 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the background color of the display panel
+    Procedure Set ComDisplayBackColor VB_OLE_COLOR value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 37 OLE_VT_UI4 to value
+    End_Procedure
+
+    // Returns or sets the display mode (time or frames)
+    Function ComDisplayMode Returns OLEMPDisplayModeConstants
+        Handle hDispatchDriver
+        OLEMPDisplayModeConstants retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 32 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the display mode (time or frames)
+    Procedure Set ComDisplayMode OLEMPDisplayModeConstants value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 32 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets the video border 3D effect
+    Function ComVideoBorder3D Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1103 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the video border 3D effect
+    Procedure Set ComVideoBorder3D Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1103 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the video border width
+    Function ComVideoBorderWidth Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1101 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the video border width
+    Procedure Set ComVideoBorderWidth Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1101 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets the video border color
+    Function ComVideoBorderColor Returns VB_OLE_COLOR
+        Handle hDispatchDriver
+        VB_OLE_COLOR retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1102 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the video border color
+    Procedure Set ComVideoBorderColor VB_OLE_COLOR value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1102 OLE_VT_UI4 to value
+    End_Procedure
+
+    // Show Gotobar
+    Function ComShowGotoBar Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1088 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Show Gotobar
+    Procedure Set ComShowGotoBar Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1088 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Show status bar
+    Function ComShowStatusBar Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1086 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Show status bar
+    Procedure Set ComShowStatusBar Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1086 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Show captioning text
+    Function ComShowCaptioning Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1084 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Show captioning text
+    Procedure Set ComShowCaptioning Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1084 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Show audio controls
+    Function ComShowAudioControls Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1107 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Show audio controls
+    Procedure Set ComShowAudioControls Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1107 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the captioning information
+    Function ComCaptioningID Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1085 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the captioning information
+    Procedure Set ComCaptioningID String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1085 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns or sets the current mute state of the stream
+    Function ComMute Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1089 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current mute state of the stream
+    Procedure Set ComMute Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1089 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns whether the control currently has something that can be previewed
+    Function ComCanPreview Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1093 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether the control is in preview mode
+    Function ComPreviewMode Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1091 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether the control is in preview mode
+    Procedure Set ComPreviewMode Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1091 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns whether the control currently has something that contains multiple items
+    Function ComHasMultipleItems Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1094 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current language, using windows LCIDs
+    Function ComLanguage Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1095 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current language, using windows LCIDs
+    Procedure Set ComLanguage Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1095 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets the current audio stream
+    Function ComAudioStream Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1096 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current audio stream
+    Procedure Set ComAudioStream Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1096 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets the closed-captioning style
+    Function ComSAMIStyle Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1097 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the closed-captioning style
+    Procedure Set ComSAMIStyle String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1097 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns or sets the closed-captioning language
+    Function ComSAMILang Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1098 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the closed-captioning language
+    Procedure Set ComSAMILang String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1098 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns or sets the closed-captioning filename
+    Function ComSAMIFileName Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1099 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the closed-captioning filename
+    Procedure Set ComSAMIFileName String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1099 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns the number of media streams
+    Function ComStreamCount Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1100 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns a unique id for the player
+    Function ComClientId Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1106 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the network connection speed of the player
+    Function ComConnectionSpeed Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1113 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Size the control automatically to the loaded media
+    Function ComAutoSize Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver -500 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Size the control automatically to the loaded media
+    Procedure Set ComAutoSize Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver -500 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Enables controls during full screen
+    Function ComEnableFullScreenControls Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1108 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Enables controls during full screen
+    Procedure Set ComEnableFullScreenControls Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1108 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns the ActiveMovie player object
+    Function ComActiveMovie Returns Variant
+        Handle hDispatchDriver
+        Variant retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1109 OLE_VT_DISPATCH to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the NetShow player object
+    Function ComNSPlay Returns Variant
+        Handle hDispatchDriver
+        Variant retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1110 OLE_VT_DISPATCH to retVal
+        Function_Return retVal
+    End_Function
+
+    // Render video without a window
+    Function ComWindowlessVideo Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1112 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Render video without a window
+    Procedure Set ComWindowlessVideo Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1112 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Begins playing from the current position or marker
+    Procedure ComPlay
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2001 OLE_VT_VOID
+    End_Procedure
+
+    // Stops file playback at the current position
+    Procedure ComStop
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2003 OLE_VT_VOID
+    End_Procedure
+
+    // Pauses file playback at the current position
+    Procedure ComPause
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2002 OLE_VT_VOID
+    End_Procedure
+
+    // Returns the time of a marker
+    Function ComGetMarkerTime Integer llMarkerNum Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llMarkerNum
+        Get InvokeComMethod of hDispatchDriver 2004 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the name of a marker
+    Function ComGetMarkerName Integer llMarkerNum Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llMarkerNum
+        Get InvokeComMethod of hDispatchDriver 2005 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Displays version information dialog box
+    Procedure ComAboutBox
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver -552 OLE_VT_VOID
+    End_Procedure
+
+    // Returns whether or not a codec is installed
+    Function ComGetCodecInstalled Integer llCodecNum Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llCodecNum
+        Get InvokeComMethod of hDispatchDriver 2007 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the descriptive name of a codec
+    Function ComGetCodecDescription Integer llCodecNum Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llCodecNum
+        Get InvokeComMethod of hDispatchDriver 2008 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the URL for a codec
+    Function ComGetCodecURL Integer llCodecNum Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llCodecNum
+        Get InvokeComMethod of hDispatchDriver 2009 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns a More Information URL
+    Function ComGetMoreInfoURL OLEMPMoreInfoType llMoreInfoType Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llMoreInfoType
+        Get InvokeComMethod of hDispatchDriver 2011 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns an Information String for the Media
+    Function ComGetMediaInfoString OLEMPMediaInfoType llMediaInfoType Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llMediaInfoType
+        Get InvokeComMethod of hDispatchDriver 2016 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Cancels the current operation
+    Procedure ComCancel
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2006 OLE_VT_VOID
+    End_Procedure
+
+    // Opens the given filename asynchronously
+    Procedure ComOpen String llbstrFileName
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llbstrFileName
+        Send InvokeComMethod to hDispatchDriver 2010 OLE_VT_VOID
+    End_Procedure
+
+    // Determines whether the sound card is enabled on the machine
+    Function ComIsSoundCardEnabled Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 53 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Jumps to the next item
+    Procedure ComNext
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2023 OLE_VT_VOID
+    End_Procedure
+
+    // Jumps to the previous item
+    Procedure ComPrevious
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2022 OLE_VT_VOID
+    End_Procedure
+
+    // Selects a media stream
+    Procedure ComStreamSelect Integer llStreamNum
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llStreamNum
+        Send InvokeComMethod to hDispatchDriver 2015 OLE_VT_VOID
+    End_Procedure
+
+    // Fast Forwards the playback
+    Procedure ComFastForward
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2024 OLE_VT_VOID
+    End_Procedure
+
+    // Fast Reverses the playback
+    Procedure ComFastReverse
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2025 OLE_VT_VOID
+    End_Procedure
+
+    // Returns the name of a media stream
+    Function ComGetStreamName Integer llStreamNum Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llStreamNum
+        Get InvokeComMethod of hDispatchDriver 2019 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the group of a media stream
+    Function ComGetStreamGroup Integer llStreamNum Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llStreamNum
+        Get InvokeComMethod of hDispatchDriver 2020 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns whether a media stream is selected
+    Function ComGetStreamSelected Integer llStreamNum Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llStreamNum
+        Get InvokeComMethod of hDispatchDriver 2021 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the MediaPlayer DVD interface
+    Function ComDVD Returns Variant
+        Handle hDispatchDriver
+        Variant retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1500 OLE_VT_DISPATCH to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the value for a given parameter name and entry number
+    Function ComGetMediaParameter Integer llEntryNum String llbstrParameterName Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 2
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llEntryNum
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llbstrParameterName
+        Get InvokeComMethod of hDispatchDriver 2028 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the name for a given parameter index and entry number
+    Function ComGetMediaParameterName Integer llEntryNum Integer llIndex Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 2
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llEntryNum
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llIndex
+        Get InvokeComMethod of hDispatchDriver 2029 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the number of playlist entries
+    Function ComEntryCount Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 2030 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the current playlist item's entry number
+    Function ComGetCurrentEntry Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 2031 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Sets the current playlist entry
+    Procedure ComSetCurrentEntry Integer llEntryNumber
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llEntryNumber
+        Send InvokeComMethod to hDispatchDriver 2032 OLE_VT_VOID
+    End_Procedure
+
+    // Displays modal dialog box containing WMP options
+    Procedure ComShowDialog OLEMPShowDialogConstants llmpDialogIndex
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llmpDialogIndex
+        Send InvokeComMethod to hDispatchDriver 2033 OLE_VT_VOID
+    End_Procedure
+End_Class
+
+// Event interface for Windows Media Player control
+Class cCom_MediaPlayerEvents is a Mixin
+
+    // DVD related notifications
+    Procedure OnComDVDNotify Integer llEventCode Integer llEventParam1 Integer llEventParam2
+    End_Procedure
+
+    // Sent when the end of file is reached
+    Procedure OnComEndOfStream Integer llResult
+    End_Procedure
+
+    // Sent when a key is pressed
+    Procedure OnComKeyDown Short llKeyCode Short llShiftState
+    End_Procedure
+
+    // Sent when a key is released
+    Procedure OnComKeyUp Short llKeyCode Short llShiftState
+    End_Procedure
+
+    // Sent when a character is entered
+    Procedure OnComKeyPress Short llCharacterCode
+    End_Procedure
+
+    // Sent when the mouse is moved
+    Procedure OnComMouseMove Short llButton Short llShiftState OLE_XPOS_PIXELS llx OLE_YPOS_PIXELS lly
+    End_Procedure
+
+    // Sent when a mouse button is pressed
+    Procedure OnComMouseDown Short llButton Short llShiftState OLE_XPOS_PIXELS llx OLE_YPOS_PIXELS lly
+    End_Procedure
+
+    // Sent when a mouse button is released
+    Procedure OnComMouseUp Short llButton Short llShiftState OLE_XPOS_PIXELS llx OLE_YPOS_PIXELS lly
+    End_Procedure
+
+    // Sent when a mouse button is clicked
+    Procedure OnComClick Short llButton Short llShiftState OLE_XPOS_PIXELS llx OLE_YPOS_PIXELS lly
+    End_Procedure
+
+    // Sent when a mouse button is double clicked
+    Procedure OnComDblClick Short llButton Short llShiftState OLE_XPOS_PIXELS llx OLE_YPOS_PIXELS lly
+    End_Procedure
+
+    // Sent when the control changes OpenState
+    Procedure OnComOpenStateChange Integer llOldState Integer llNewState
+    End_Procedure
+
+    // Sent when the control changes PlayState
+    Procedure OnComPlayStateChange Integer llOldState Integer llNewState
+    End_Procedure
+
+    // Sent when a synchronized command or URL is received
+    Procedure OnComScriptCommand String llscType String llParam
+    End_Procedure
+
+    // Sent when the control begins or ends buffering
+    Procedure OnComBuffering Boolean llStart
+    End_Procedure
+
+    // Sent when the control has an error condition
+    Procedure OnComError
+    End_Procedure
+
+    // Sent when a marker is reached
+    Procedure OnComMarkerHit Integer llMarkerNum
+    End_Procedure
+
+    // Sent when the control encounters a problem
+    Procedure OnComWarning Integer llWarningType Integer llParam String llDescription
+    End_Procedure
+
+    // Sent when a new stream is started in a channel
+    Procedure OnComNewStream
+    End_Procedure
+
+    // Sent when the control is disconnected from the server
+    Procedure OnComDisconnect Integer llResult
+    End_Procedure
+
+    // Indicates that the current position of the movie has changed
+    Procedure OnComPositionChange Real lloldPosition Real llnewPosition
+    End_Procedure
+
+    // Indicates that the display mode of the movie has changed
+    Procedure OnComDisplayModeChange
+    End_Procedure
+
+    // Reports that the ReadyState property of the ActiveMovie Control has changed
+    Procedure OnComReadyStateChange OLEReadyStateConstants llReadyState
+    End_Procedure
+
+    Procedure RegisterComEvents
+        Send RegisterComEvent 1505 msg_OnComDVDNotify
+        Send RegisterComEvent 3002 msg_OnComEndOfStream
+        Send RegisterComEvent -602 msg_OnComKeyDown
+        Send RegisterComEvent -604 msg_OnComKeyUp
+        Send RegisterComEvent -603 msg_OnComKeyPress
+        Send RegisterComEvent -606 msg_OnComMouseMove
+        Send RegisterComEvent -605 msg_OnComMouseDown
+        Send RegisterComEvent -607 msg_OnComMouseUp
+        Send RegisterComEvent -600 msg_OnComClick
+        Send RegisterComEvent -601 msg_OnComDblClick
+        Send RegisterComEvent 3011 msg_OnComOpenStateChange
+        Send RegisterComEvent 3012 msg_OnComPlayStateChange
+        Send RegisterComEvent 3001 msg_OnComScriptCommand
+        Send RegisterComEvent 3003 msg_OnComBuffering
+        Send RegisterComEvent 3010 msg_OnComError
+        Send RegisterComEvent 3006 msg_OnComMarkerHit
+        Send RegisterComEvent 3009 msg_OnComWarning
+        Send RegisterComEvent 3008 msg_OnComNewStream
+        Send RegisterComEvent 3004 msg_OnComDisconnect
+        Send RegisterComEvent 2 msg_OnComPositionChange
+        Send RegisterComEvent 51 msg_OnComDisplayModeChange
+        Send RegisterComEvent -609 msg_OnComReadyStateChange
+    End_Procedure
+End_Class
+
+// CoClass
+// ProgID: MediaPlayer.MediaPlayer.1
+// CLSID: {22D6F312-B0F6-11D0-94AB-0080C74C7E95}
+// Windows Media Player
+// Visual DataFlex 12.0 Migration Utility, added July 18, 2006: 14:08:16
+#IF (!@ >= 120)
+{ OverrideProperty=Size InitialValue=70,70 }
+{ OverrideProperty=peAutoCreate InitialValue=acDeferredAutoCreate }
+{ OverrideProperty=peAutoCreate EnumList="acNoAutoCreate, acAutoCreate, acDeferredAutoCreate" }
+#ENDIF
+// Visual DataFlex 12.0 Migration Utility, added July 18, 2006: 14:08:17
+#IF (!@ >= 120)
+{ CLSID="{22D6F312-B0F6-11D0-94AB-0080C74C7E95}" }
+#ENDIF
+Class cComMediaPlayer is a cComActiveXControl
+    Import_Class_Protocol cComIMediaPlayer2
+    Import_Class_Protocol cCom_MediaPlayerEvents
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{22D6F312-B0F6-11D0-94AB-0080C74C7E95}"
+        Set peAutoCreate to acDeferredAutoCreate
+    End_Procedure
+End_Class
+
+// CLSID: {00000000-0000-0000-C000-000000000046}
+Class cComIUnknown is a Mixin
+End_Class
+
+// CoClass
+// CLSID: {5C85DCB0-F967-11D0-81ED-00C04FC99D4C}
+// Windows Media Player Network Property Page
+Class cComppDShowNet is a cComAutomationObject
+    Import_Class_Protocol cComIUnknown
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{5C85DCB0-F967-11D0-81ED-00C04FC99D4C}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CoClass
+// CLSID: {C0CD59AE-020D-11D1-81F2-00C04FC99D4C}
+// Windows Media Player Playback Property Page
+Class cComppDShowPlay is a cComAutomationObject
+    Import_Class_Protocol cComIUnknown
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{C0CD59AE-020D-11D1-81F2-00C04FC99D4C}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CoClass
+// CLSID: {2FEB9591-50CF-11D1-A6DF-006097C4E476}
+// ppDSMeta Class
+Class cComppDSMeta is a cComAutomationObject
+    Import_Class_Protocol cComIUnknown
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{2FEB9591-50CF-11D1-A6DF-006097C4E476}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CoClass
+// CLSID: {BB314F91-A010-11D1-A75A-006097C4E476}
+// ppDSCnnl Class
+Class cComppDSCnnl is a cComAutomationObject
+    Import_Class_Protocol cComIUnknown
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{BB314F91-A010-11D1-A75A-006097C4E476}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CoClass
+// CLSID: {31C48C31-70B0-11D1-A708-006097C4E476}
+// ppDSClip Class
+Class cComppDSClip is a cComAutomationObject
+    Import_Class_Protocol cComIUnknown
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{31C48C31-70B0-11D1-A708-006097C4E476}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CoClass
+// CLSID: {31C48C32-70B0-11D1-A708-006097C4E476}
+// ppDSDetl Class
+Class cComppDSDetl is a cComAutomationObject
+    Import_Class_Protocol cComIUnknown
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{31C48C32-70B0-11D1-A708-006097C4E476}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CoClass
+// CLSID: {2AFA62E2-5548-11D1-A6E1-006097C4E476}
+// ppDSApp Class
+Class cComppDSApp is a cComAutomationObject
+    Import_Class_Protocol cComIUnknown
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{2AFA62E2-5548-11D1-A6E1-006097C4E476}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CoClass
+// CLSID: {8C4EB103-516F-11D1-A6DF-006097C4E476}
+// ppDSPropAdv Class
+Class cComppDSPropAdv is a cComAutomationObject
+    Import_Class_Protocol cComIUnknown
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{8C4EB103-516F-11D1-A6DF-006097C4E476}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CoClass
+// CLSID: {AE1A5812-5230-11D1-A6E0-006097C4E476}
+// ppDSView Class
+Class cComppDSView is a cComAutomationObject
+    Import_Class_Protocol cComIUnknown
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{AE1A5812-5230-11D1-A6E0-006097C4E476}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CoClass
+// CLSID: {AE1A5813-5230-11D1-A6E0-006097C4E476}
+// ppDSOAdv Class
+Class cComppDSOAdv is a cComAutomationObject
+    Import_Class_Protocol cComIUnknown
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{AE1A5813-5230-11D1-A6E0-006097C4E476}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CLSID: {3DA2AA3A-3D96-11D2-9BD2-204C4F4F5020}
+// IAsyncPProt Interface
+Class cComIAsyncPProt is a Mixin
+End_Class
+
+// _IAsyncPProtEvents Interface
+Class cCom_IAsyncPProtEvents is a Mixin
+
+    Procedure RegisterComEvents
+    End_Procedure
+End_Class
+
+// CoClass
+// ProgID: Mmedia.AsyncPProt.1
+// CLSID: {3DA2AA3B-3D96-11D2-9BD2-204C4F4F5020}
+// AsyncPProt Class
+Class cComAsyncPProt is a cComAutomationObject
+    Import_Class_Protocol cComIAsyncPProt
+    Import_Class_Protocol cCom_IAsyncPProtEvents
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{3DA2AA3B-3D96-11D2-9BD2-204C4F4F5020}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CLSID: {3DA2AA3D-3D96-11D2-9BD2-204C4F4F5020}
+// IAsyncMHandler Interface
+Class cComIAsyncMHandler is a Mixin
+End_Class
+
+// CoClass
+// ProgID: Mmedia.AsyncMHandler.1
+// CLSID: {3DA2AA3E-3D96-11D2-9BD2-204C4F4F5020}
+// AsyncMHandler Class
+Class cComAsyncMHandler is a cComAutomationObject
+    Import_Class_Protocol cComIAsyncMHandler
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{3DA2AA3E-3D96-11D2-9BD2-204C4F4F5020}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CLSID: {9C2263AF-3E3C-11D2-9BD3-204C4F4F5020}
+// IRadioPlayer Interface
+Class cComIRadioPlayer is a Mixin
+
+    Procedure ComBindRadioMemory
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 17 OLE_VT_VOID
+    End_Procedure
+
+    Procedure ComReleaseRadio
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 18 OLE_VT_VOID
+    End_Procedure
+
+    Function ComRegisterEvent String llbszEvent Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llbszEvent
+        Get InvokeComMethod of hDispatchDriver 5 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    Function ComRegisterWindow Integer ll__MIDL_0012 UInteger lldwMessage UInteger lldwCodeSet Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 3
+        Send DefineParam to hDispatchDriver OLE_VT_I4 ll__MIDL_0012
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 lldwMessage
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 lldwCodeSet
+        Get InvokeComMethod of hDispatchDriver 4 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    Function ComGetSection Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 9 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    Procedure ComUnregister Integer lllRegister
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 lllRegister
+        Send InvokeComMethod to hDispatchDriver 6 OLE_VT_VOID
+    End_Procedure
+
+    Function ComGetInstanceCount Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 20 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    Procedure ComPlay
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 7 OLE_VT_VOID
+    End_Procedure
+
+    Procedure ComStop
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 8 OLE_VT_VOID
+    End_Procedure
+
+    Procedure Set ComUrl String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1 OLE_VT_BSTR to value
+    End_Procedure
+
+    Procedure Set ComVolume Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 2 OLE_VT_I4 to value
+    End_Procedure
+
+    Procedure Set ComMute Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 3 OLE_VT_BOOL to value
+    End_Procedure
+
+    Procedure ComGetStatus Variant llplVolume Variant llpfMute Variant llpfPlay Variant ll__MIDL_0013 Variant ll__MIDL_0014 Variant ll__MIDL_0015 Variant ll__MIDL_0016 Variant ll__MIDL_0017 Variant ll__MIDL_0018 Variant ll__MIDL_0019
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 10
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_I4) llplVolume
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_I4) llpfMute
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_I4) llpfPlay
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_BSTR) ll__MIDL_0013
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_BSTR) ll__MIDL_0014
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_BSTR) ll__MIDL_0015
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_BSTR) ll__MIDL_0016
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_BSTR) ll__MIDL_0017
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_BSTR) ll__MIDL_0018
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_BSTR) ll__MIDL_0019
+        Send InvokeComMethod to hDispatchDriver 11 OLE_VT_VOID
+    End_Procedure
+
+    Procedure ComGetState Variant llplOpenState Variant llpfBuffering Variant llplBufferingPercent Variant llplQuality
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 4
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_I4) llplOpenState
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_I4) llpfBuffering
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_I4) llplBufferingPercent
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_I4) llplQuality
+        Send InvokeComMethod to hDispatchDriver 19 OLE_VT_VOID
+    End_Procedure
+End_Class
+
+// _IRadioPlayerEvents Interface
+Class cCom_IRadioPlayerEvents is a Mixin
+
+    Procedure OnComStateChange String llbszUrl Boolean llfPlay Integer lllVolume Boolean llfMute
+    End_Procedure
+
+    Procedure RegisterComEvents
+        Send RegisterComEvent 12 msg_OnComStateChange
+    End_Procedure
+End_Class
+
+// CoClass
+// ProgID: Mmedia.RadioPlayer.1
+// CLSID: {9C2263B0-3E3C-11D2-9BD3-204C4F4F5020}
+// RadioPlayer Class
+Class cComRadioPlayer is a cComAutomationObject
+    Import_Class_Protocol cComIRadioPlayer
+    Import_Class_Protocol cCom_IRadioPlayerEvents
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{9C2263B0-3E3C-11D2-9BD3-204C4F4F5020}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CoClass
+// ProgID: Mmedia.RadioServer.1
+// CLSID: {8E71888A-423F-11D2-876E-00A0C9082467}
+// RadioServer Class
+Class cComRadioServer is a cComAutomationObject
+    Import_Class_Protocol cComIRadioPlayer
+    Import_Class_Protocol cCom_IRadioPlayerEvents
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{8E71888A-423F-11D2-876E-00A0C9082467}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CLSID: {8E718881-423F-11D2-876E-00A0C9082467}
+// IRadioBand Interface
+Class cComIRadioBand is a Mixin
+
+    Procedure ComCreate Variant llphwnd Integer llhwndParent
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 2
+        Send DefineParam to hDispatchDriver (OLE_VT_BYREF ior OLE_VT_I4) llphwnd
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llhwndParent
+        Send InvokeComMethod to hDispatchDriver 1610743808 OLE_VT_VOID
+    End_Procedure
+End_Class
+
+// CoClass
+// ProgID: Mmedia.RadioBand.1
+// CLSID: {8E718888-423F-11D2-876E-00A0C9082467}
+// RadioBand Class
+Class cComRadioBand is a cComAutomationObject
+    Import_Class_Protocol cComIRadioBand
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{8E718888-423F-11D2-876E-00A0C9082467}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CoClass
+// CLSID: {1D1237A0-6CD6-11D2-96BA-00104B242E64}
+// ppDSFile Class
+Class cComppDSFile is a cComAutomationObject
+    Import_Class_Protocol cComIUnknown
+
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psProgID to "{1D1237A0-6CD6-11D2-96BA-00104B242E64}"
+        Set peAutoCreate to acNoAutoCreate
+    End_Procedure
+End_Class
+
+// CLSID: {22D6F311-B0F6-11D0-94AB-0080C74C7E95}
+// IMediaPlayer Interface
+Class cComIMediaPlayer is a cComAutomationObject
+
+    // Returns or sets the current position in the file
+    Function ComCurrentPosition Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1027 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current position in the file
+    Procedure Set ComCurrentPosition Real value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1027 OLE_VT_R8 to value
+    End_Procedure
+
+    // Returns the play duration of the file
+    Function ComDuration Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1003 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the original width of the source images
+    Function ComImageSourceWidth Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1001 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the original height of the source images
+    Function ComImageSourceHeight Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1002 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the number of markers in the file
+    Function ComMarkerCount Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1010 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns whether or not the file can be fast forwarded or reversed
+    Function ComCanScan Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1011 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns whether or not the file can be seeked into
+    Function ComCanSeek Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1012 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns whether or not the file can be seeked into by markers
+    Function ComCanSeekToMarkers Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1047 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current marker number
+    Function ComCurrentMarker Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1029 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current marker number
+    Procedure Set ComCurrentMarker Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1029 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets the current file name and path
+    Function ComFileName Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1026 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current file name and path
+    Procedure Set ComFileName String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1026 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns the source path of the file
+    Function ComSourceLink Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1009 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the creation date of the file
+    Function ComCreationDate Returns DateTime
+        Handle hDispatchDriver
+        DateTime retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1036 OLE_VT_DATE to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the error correction type of the file
+    Function ComErrorCorrection Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1038 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the bandwidth of the file in bits per second
+    Function ComBandwidth Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1037 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the protocol used to receive data
+    Function ComSourceProtocol Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1060 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the number of packets received
+    Function ComReceivedPackets Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1039 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the number of packets recovered
+    Function ComRecoveredPackets Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1040 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the number of packets lost
+    Function ComLostPackets Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1041 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the percentage of packets received in the last 30 seconds
+    Function ComReceptionQuality Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1042 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the number of times buffering occurred during playback
+    Function ComBufferingCount Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1043 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns whether or not the source is a broadcast
+    Function ComIsBroadcast Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1058 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the percentage of buffering completed
+    Function ComBufferingProgress Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1080 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the name of the station
+    Function ComChannelName Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1050 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the description of the station
+    Function ComChannelDescription Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1051 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the location of the station metafile
+    Function ComChannelURL Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1052 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the contact address of the station
+    Function ComContactAddress Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1053 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the contact phone number of the station
+    Function ComContactPhone Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1054 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the contact e-mail address of the station
+    Function ComContactEmail Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1055 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the control's buffering time
+    Function ComBufferingTime Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1070 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the control's buffering time
+    Procedure Set ComBufferingTime Real value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1070 OLE_VT_R8 to value
+    End_Procedure
+
+    // Returns or sets whether or not file playback is automatically started
+    Function ComAutoStart Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1017 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not file playback is automatically started
+    Procedure Set ComAutoStart Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1017 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not a file is rewound at the end of playback
+    Function ComAutoRewind Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1018 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not a file is rewound at the end of playback
+    Procedure Set ComAutoRewind Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1018 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the current playback rate
+    Function ComRate Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1028 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current playback rate
+    Procedure Set ComRate Real value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1028 OLE_VT_R8 to value
+    End_Procedure
+
+    // Returns or sets whether or not the control sends keyboard events
+    Function ComSendKeyboardEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1013 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends keyboard events
+    Procedure Set ComSendKeyboardEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1013 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not the control sends mouse click events
+    Function ComSendMouseClickEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1014 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends mouse click events
+    Procedure Set ComSendMouseClickEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1014 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not the control sends mouse move events
+    Function ComSendMouseMoveEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1015 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends mouse move events
+    Procedure Set ComSendMouseMoveEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1015 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the number of times a file plays
+    Function ComPlayCount Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1030 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the number of times a file plays
+    Procedure Set ComPlayCount Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1030 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets whether or not clicking on the control starts file playback
+    Function ComClickToPlay Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1025 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not clicking on the control starts file playback
+    Procedure Set ComClickToPlay Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1025 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not scanning is enabled on files that support it
+    Function ComAllowScan Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1035 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not scanning is enabled on files that support it
+    Procedure Set ComAllowScan Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1035 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not a right mouse click invokes a context menu
+    Function ComEnableContextMenu Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1021 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not a right mouse click invokes a context menu
+    Procedure Set ComEnableContextMenu Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1021 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the cursor type
+    Function ComCursorType Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1044 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the cursor type
+    Procedure Set ComCursorType Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1044 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns the number of installable codecs used by the file
+    Function ComCodecCount Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1057 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the display size can be set at run time
+    Function ComAllowChangeDisplaySize Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1056 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the display size can be set at run time
+    Procedure Set ComAllowChangeDisplaySize Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1056 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns whether or not the duration is known
+    Function ComIsDurationValid Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1059 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the open state of the control
+    Function ComOpenState Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1061 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends OpenStateChange events
+    Function ComSendOpenStateChangeEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1062 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends OpenStateChange events
+    Procedure Set ComSendOpenStateChangeEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1062 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not the control sends Warning events
+    Function ComSendWarningEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1063 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends Warning events
+    Procedure Set ComSendWarningEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1063 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not the control sends Error events
+    Function ComSendErrorEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1064 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends Error events
+    Procedure Set ComSendErrorEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1064 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns the play state of the control
+    Function ComPlayState Returns OLEMPPlayStateConstants
+        Handle hDispatchDriver
+        OLEMPPlayStateConstants retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1068 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends PlayStateChange events
+    Function ComSendPlayStateChangeEvents Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1069 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control sends PlayStateChange events
+    Procedure Set ComSendPlayStateChangeEvents Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1069 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the display size of images
+    Function ComDisplaySize Returns OLEMPDisplaySizeConstants
+        Handle hDispatchDriver
+        OLEMPDisplaySizeConstants retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1032 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the display size of images
+    Procedure Set ComDisplaySize OLEMPDisplaySizeConstants value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1032 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets whether or not received URLs are automatically invoked
+    Function ComInvokeURLs Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1020 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not received URLs are automatically invoked
+    Procedure Set ComInvokeURLs Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1020 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the control's base HTTP URL
+    Function ComBaseURL Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1082 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the control's base HTTP URL
+    Procedure Set ComBaseURL String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1082 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns or sets the control's default target HTTP frame
+    Function ComDefaultFrame Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1083 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the control's default target HTTP frame
+    Procedure Set ComDefaultFrame String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1083 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns whether or not the control currently has an error
+    Function ComHasError Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1065 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the description of the current error state
+    Function ComErrorDescription Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1066 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the current error code
+    Function ComErrorCode Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1067 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control shows its animation during initial file buffering
+    Function ComAnimationAtStart Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1045 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control shows its animation during initial file buffering
+    Procedure Set ComAnimationAtStart Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1045 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets whether or not the control is transparent before playing
+    Function ComTransparentAtStart Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1022 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether or not the control is transparent before playing
+    Procedure Set ComTransparentAtStart Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1022 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the current volume of the stream
+    Function ComVolume Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 19 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current volume of the stream
+    Procedure Set ComVolume Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 19 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets the current balance of the stream
+    Function ComBalance Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 20 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current balance of the stream
+    Procedure Set ComBalance Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 20 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns the readiness state of the control
+    Function ComReadyState Returns OLEMPReadyStateConstants
+        Handle hDispatchDriver
+        OLEMPReadyStateConstants retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver -525 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the position where playback will begin
+    Function ComSelectionStart Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 15 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the position where playback will begin
+    Procedure Set ComSelectionStart Real value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 15 OLE_VT_R8 to value
+    End_Procedure
+
+    // Returns or sets the position where playback will stop
+    Function ComSelectionEnd Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 16 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the position where playback will stop
+    Procedure Set ComSelectionEnd Real value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 16 OLE_VT_R8 to value
+    End_Procedure
+
+    // Shows or hides the display panel
+    Function ComShowDisplay Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 22 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Shows or hides the display panel
+    Procedure Set ComShowDisplay Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 22 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Shows or hides the control panel
+    Function ComShowControls Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 23 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Shows or hides the control panel
+    Procedure Set ComShowControls Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 23 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Shows or hides the position buttons in the control panel
+    Function ComShowPositionControls Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 24 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Shows or hides the position buttons in the control panel
+    Procedure Set ComShowPositionControls Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 24 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Shows or hides the tracker bar in the control panel
+    Function ComShowTracker Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 26 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Shows or hides the tracker bar in the control panel
+    Procedure Set ComShowTracker Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 26 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Enables or disables the position buttons in the control panel
+    Function ComEnablePositionControls Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 27 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Enables or disables the position buttons in the control panel
+    Procedure Set ComEnablePositionControls Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 27 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Enables or disables the tracker bar in the control panel
+    Function ComEnableTracker Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 29 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Enables or disables the tracker bar in the control panel
+    Procedure Set ComEnableTracker Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 29 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Enables or disables the control
+    Function ComEnabled Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver -514 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Enables or disables the control
+    Procedure Set ComEnabled Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver -514 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the foreground color of the display panel
+    Function ComDisplayForeColor Returns VB_OLE_COLOR
+        Handle hDispatchDriver
+        VB_OLE_COLOR retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 36 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the foreground color of the display panel
+    Procedure Set ComDisplayForeColor VB_OLE_COLOR value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 36 OLE_VT_UI4 to value
+    End_Procedure
+
+    // Returns or sets the background color of the display panel
+    Function ComDisplayBackColor Returns VB_OLE_COLOR
+        Handle hDispatchDriver
+        VB_OLE_COLOR retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 37 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the background color of the display panel
+    Procedure Set ComDisplayBackColor VB_OLE_COLOR value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 37 OLE_VT_UI4 to value
+    End_Procedure
+
+    // Returns or sets the display mode (time or frames)
+    Function ComDisplayMode Returns OLEMPDisplayModeConstants
+        Handle hDispatchDriver
+        OLEMPDisplayModeConstants retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 32 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the display mode (time or frames)
+    Procedure Set ComDisplayMode OLEMPDisplayModeConstants value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 32 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets the video border 3D effect
+    Function ComVideoBorder3D Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1103 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the video border 3D effect
+    Procedure Set ComVideoBorder3D Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1103 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the video border width
+    Function ComVideoBorderWidth Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1101 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the video border width
+    Procedure Set ComVideoBorderWidth Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1101 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets the video border color
+    Function ComVideoBorderColor Returns VB_OLE_COLOR
+        Handle hDispatchDriver
+        VB_OLE_COLOR retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1102 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the video border color
+    Procedure Set ComVideoBorderColor VB_OLE_COLOR value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1102 OLE_VT_UI4 to value
+    End_Procedure
+
+    // Show Gotobar
+    Function ComShowGotoBar Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1088 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Show Gotobar
+    Procedure Set ComShowGotoBar Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1088 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Show status bar
+    Function ComShowStatusBar Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1086 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Show status bar
+    Procedure Set ComShowStatusBar Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1086 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Show captioning text
+    Function ComShowCaptioning Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1084 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Show captioning text
+    Procedure Set ComShowCaptioning Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1084 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Show audio controls
+    Function ComShowAudioControls Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1107 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Show audio controls
+    Procedure Set ComShowAudioControls Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1107 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns or sets the captioning information
+    Function ComCaptioningID Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1085 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the captioning information
+    Procedure Set ComCaptioningID String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1085 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns or sets the current mute state of the stream
+    Function ComMute Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1089 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current mute state of the stream
+    Procedure Set ComMute Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1089 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns whether the control currently has something that can be previewed
+    Function ComCanPreview Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1093 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether the control is in preview mode
+    Function ComPreviewMode Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1091 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets whether the control is in preview mode
+    Procedure Set ComPreviewMode Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1091 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns whether the control currently has something that contains multiple items
+    Function ComHasMultipleItems Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1094 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current language, using windows LCIDs
+    Function ComLanguage Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1095 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current language, using windows LCIDs
+    Procedure Set ComLanguage Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1095 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets the current audio stream
+    Function ComAudioStream Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1096 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the current audio stream
+    Procedure Set ComAudioStream Integer value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1096 OLE_VT_I4 to value
+    End_Procedure
+
+    // Returns or sets the closed-captioning style
+    Function ComSAMIStyle Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1097 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the closed-captioning style
+    Procedure Set ComSAMIStyle String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1097 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns or sets the closed-captioning language
+    Function ComSAMILang Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1098 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the closed-captioning language
+    Procedure Set ComSAMILang String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1098 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns or sets the closed-captioning filename
+    Function ComSAMIFileName Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1099 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns or sets the closed-captioning filename
+    Procedure Set ComSAMIFileName String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1099 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Returns the number of media streams
+    Function ComStreamCount Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1100 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns a unique id for the player
+    Function ComClientId Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1106 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the network connection speed of the player
+    Function ComConnectionSpeed Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1113 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Size the control automatically to the loaded media
+    Function ComAutoSize Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver -500 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Size the control automatically to the loaded media
+    Procedure Set ComAutoSize Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver -500 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Enables controls during full screen
+    Function ComEnableFullScreenControls Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1108 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Enables controls during full screen
+    Procedure Set ComEnableFullScreenControls Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1108 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Returns the ActiveMovie player object
+    Function ComActiveMovie Returns Variant
+        Handle hDispatchDriver
+        Variant retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1109 OLE_VT_DISPATCH to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the NetShow player object
+    Function ComNSPlay Returns Variant
+        Handle hDispatchDriver
+        Variant retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1110 OLE_VT_DISPATCH to retVal
+        Function_Return retVal
+    End_Function
+
+    // Render video without a window
+    Function ComWindowlessVideo Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1112 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Render video without a window
+    Procedure Set ComWindowlessVideo Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1112 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Begins playing from the current position or marker
+    Procedure ComPlay
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2001 OLE_VT_VOID
+    End_Procedure
+
+    // Stops file playback at the current position
+    Procedure ComStop
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2003 OLE_VT_VOID
+    End_Procedure
+
+    // Pauses file playback at the current position
+    Procedure ComPause
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2002 OLE_VT_VOID
+    End_Procedure
+
+    // Returns the time of a marker
+    Function ComGetMarkerTime Integer llMarkerNum Returns Real
+        Handle hDispatchDriver
+        Real retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llMarkerNum
+        Get InvokeComMethod of hDispatchDriver 2004 OLE_VT_R8 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the name of a marker
+    Function ComGetMarkerName Integer llMarkerNum Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llMarkerNum
+        Get InvokeComMethod of hDispatchDriver 2005 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Displays version information dialog box
+    Procedure ComAboutBox
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver -552 OLE_VT_VOID
+    End_Procedure
+
+    // Returns whether or not a codec is installed
+    Function ComGetCodecInstalled Integer llCodecNum Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llCodecNum
+        Get InvokeComMethod of hDispatchDriver 2007 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the descriptive name of a codec
+    Function ComGetCodecDescription Integer llCodecNum Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llCodecNum
+        Get InvokeComMethod of hDispatchDriver 2008 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the URL for a codec
+    Function ComGetCodecURL Integer llCodecNum Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llCodecNum
+        Get InvokeComMethod of hDispatchDriver 2009 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns a More Information URL
+    Function ComGetMoreInfoURL OLEMPMoreInfoType llMoreInfoType Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llMoreInfoType
+        Get InvokeComMethod of hDispatchDriver 2011 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns an Information String for the Media
+    Function ComGetMediaInfoString OLEMPMediaInfoType llMediaInfoType Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llMediaInfoType
+        Get InvokeComMethod of hDispatchDriver 2016 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Cancels the current operation
+    Procedure ComCancel
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2006 OLE_VT_VOID
+    End_Procedure
+
+    // Opens the given filename asynchronously
+    Procedure ComOpen String llbstrFileName
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llbstrFileName
+        Send InvokeComMethod to hDispatchDriver 2010 OLE_VT_VOID
+    End_Procedure
+
+    // Determines whether the sound card is enabled on the machine
+    Function ComIsSoundCardEnabled Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 53 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Jumps to the next item
+    Procedure ComNext
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2023 OLE_VT_VOID
+    End_Procedure
+
+    // Jumps to the previous item
+    Procedure ComPrevious
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2022 OLE_VT_VOID
+    End_Procedure
+
+    // Selects a media stream
+    Procedure ComStreamSelect Integer llStreamNum
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llStreamNum
+        Send InvokeComMethod to hDispatchDriver 2015 OLE_VT_VOID
+    End_Procedure
+
+    // Fast Forwards the playback
+    Procedure ComFastForward
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2024 OLE_VT_VOID
+    End_Procedure
+
+    // Fast Reverses the playback
+    Procedure ComFastReverse
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 2025 OLE_VT_VOID
+    End_Procedure
+
+    // Returns the name of a media stream
+    Function ComGetStreamName Integer llStreamNum Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llStreamNum
+        Get InvokeComMethod of hDispatchDriver 2019 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns the group of a media stream
+    Function ComGetStreamGroup Integer llStreamNum Returns Integer
+        Handle hDispatchDriver
+        Integer retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llStreamNum
+        Get InvokeComMethod of hDispatchDriver 2020 OLE_VT_I4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Returns whether a media stream is selected
+    Function ComGetStreamSelected Integer llStreamNum Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llStreamNum
+        Get InvokeComMethod of hDispatchDriver 2021 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+End_Class
+
+// CLSID: {746EB440-3835-11D2-9774-0000F80855E6}
+// MediaPlayer DVD interface
+Class cComIMediaPlayerDvd is a cComAutomationObject
+
+    // Selects and activates specified button
+    Procedure ComButtonSelectAndActivate UInteger lluiButton
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 lluiButton
+        Send InvokeComMethod to hDispatchDriver 1526 OLE_VT_VOID
+    End_Procedure
+
+    // Selects the button above current button
+    Procedure ComUpperButtonSelect
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 1521 OLE_VT_VOID
+    End_Procedure
+
+    // Selects the button below current button
+    Procedure ComLowerButtonSelect
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 1522 OLE_VT_VOID
+    End_Procedure
+
+    // Selects the button to the left of current button
+    Procedure ComLeftButtonSelect
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 1523 OLE_VT_VOID
+    End_Procedure
+
+    // Selects the button to the right of current button
+    Procedure ComRightButtonSelect
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 1524 OLE_VT_VOID
+    End_Procedure
+
+    // Activates the currentlt selected button
+    Procedure ComButtonActivate
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 1525 OLE_VT_VOID
+    End_Procedure
+
+    // forward play at the specified speed
+    Procedure ComForwardScan Real lldwSpeed
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_R8 lldwSpeed
+        Send InvokeComMethod to hDispatchDriver 1517 OLE_VT_VOID
+    End_Procedure
+
+    // reverse play at the specified speed
+    Procedure ComBackwardScan Real lldwSpeed
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_R8 lldwSpeed
+        Send InvokeComMethod to hDispatchDriver 1518 OLE_VT_VOID
+    End_Procedure
+
+    // play previous program
+    Procedure ComPrevPGSearch
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 1514 OLE_VT_VOID
+    End_Procedure
+
+    // play current program
+    Procedure ComTopPGSearch
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 1515 OLE_VT_VOID
+    End_Procedure
+
+    // play next program
+    Procedure ComNextPGSearch
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 1516 OLE_VT_VOID
+    End_Procedure
+
+    // Play title number 1-99
+    Procedure ComTitlePlay UInteger lluiTitle
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 lluiTitle
+        Send InvokeComMethod to hDispatchDriver 1507 OLE_VT_VOID
+    End_Procedure
+
+    // Play chapter number 1-99 of title 1-99
+    Procedure ComChapterPlay UInteger lluiTitle UInteger lluiChapter
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 2
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 lluiTitle
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 lluiChapter
+        Send InvokeComMethod to hDispatchDriver 1508 OLE_VT_VOID
+    End_Procedure
+
+    // play at specified chapter in current title
+    Procedure ComChapterSearch UInteger llChapter
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 llChapter
+        Send InvokeComMethod to hDispatchDriver 1513 OLE_VT_VOID
+    End_Procedure
+
+    // Play specified menu
+    Procedure ComMenuCall OLEDVDMenuIDConstants llMenuID
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_I4 llMenuID
+        Send InvokeComMethod to hDispatchDriver 1519 OLE_VT_VOID
+    End_Procedure
+
+    // Resume title playback
+    Procedure ComResumeFromMenu
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 1520 OLE_VT_VOID
+    End_Procedure
+
+    // Play at specified time (hh:mm:ss:ff) within specified title
+    Procedure ComTimePlay UInteger lluiTitle String llbstrTime
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 2
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 lluiTitle
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llbstrTime
+        Send InvokeComMethod to hDispatchDriver 1509 OLE_VT_VOID
+    End_Procedure
+
+    // play at specified time in current title
+    Procedure ComTimeSearch String llbstrTime
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llbstrTime
+        Send InvokeComMethod to hDispatchDriver 1512 OLE_VT_VOID
+    End_Procedure
+
+    // Playing a sequence of chapters in specified title
+    Procedure ComChapterPlayAutoStop UInteger llulTitle UInteger llulChapter UInteger llulChaptersToPlay
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 3
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 llulTitle
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 llulChapter
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 llulChaptersToPlay
+        Send InvokeComMethod to hDispatchDriver 1541 OLE_VT_VOID
+    End_Procedure
+
+    // Releases any current still if there are no available buttons
+    Procedure ComStillOff
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 1527 OLE_VT_VOID
+    End_Procedure
+
+    // play current program chain 
+    Procedure ComGoUp
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send InvokeComMethod to hDispatchDriver 1511 OLE_VT_VOID
+    End_Procedure
+
+    // Gets a string containing the total time in the title (hh:mm:ss:ff)
+    Function ComTotalTitleTime Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1582 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the number of chapters for the specified title
+    Function ComGetNumberOfChapters UInteger llulTitle Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 llulTitle
+        Get InvokeComMethod of hDispatchDriver 1550 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the name of the Audio language
+    Function ComGetAudioLanguage UInteger llulStream Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 llulStream
+        Get InvokeComMethod of hDispatchDriver 1551 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the name of the Subpicture language
+    Function ComGetSubpictureLanguage UInteger llulStream Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 llulStream
+        Get InvokeComMethod of hDispatchDriver 1555 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets an array of the DVD General Parameter Registers
+    Function ComGetAllGPRMs Returns Variant
+        Handle hDispatchDriver
+        Variant retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1560 OLE_VT_VARIANT to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets an array of the DVD System Parameter Registers
+    Function ComGetAllSPRMs Returns Variant
+        Handle hDispatchDriver
+        Variant retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1559 OLE_VT_VARIANT to retVal
+        Function_Return retVal
+    End_Function
+
+    // Checks the validity of the UOP
+    Function ComUOPValid UInteger llulUOP Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_UI4 llulUOP
+        Get InvokeComMethod of hDispatchDriver 1579 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the number of available buttons
+    Function ComButtonsAvailable Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1571 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the current button number
+    Function ComCurrentButton Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1570 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the number of available Audio streams
+    Function ComAudioStreamsAvailable Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1543 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the current audio stream
+    Function ComCurrentAudioStream Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1544 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the current audio stream
+    Procedure Set ComCurrentAudioStream UInteger value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1544 OLE_VT_UI4 to value
+    End_Procedure
+
+    // Gets the current subpicture stream
+    Function ComCurrentSubpictureStream Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1545 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the current subpicture stream
+    Procedure Set ComCurrentSubpictureStream UInteger value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1545 OLE_VT_UI4 to value
+    End_Procedure
+
+    // Gets the number of available subpicture streams
+    Function ComSubpictureStreamsAvailable Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1546 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the state of the Subpicture display
+    Function ComSubpictureOn Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1547 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the state of the Subpicture display
+    Procedure Set ComSubpictureOn Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1547 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Get the number of available Angles
+    Function ComAnglesAvailable Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1549 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the current Angle
+    Function ComCurrentAngle Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1548 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the current Angle
+    Procedure Set ComCurrentAngle UInteger value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1548 OLE_VT_UI4 to value
+    End_Procedure
+
+    // Gets the current Title
+    Function ComCurrentTitle Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1567 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the current Chapter
+    Function ComCurrentChapter Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1568 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the current Time
+    Function ComCurrentTime Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1569 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Sets the root directory containing the DVD-Video volume
+    Procedure Set ComRoot String value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1538 OLE_VT_BSTR to value
+    End_Procedure
+
+    // Sets the root directory containing the DVD-Video volume
+    Function ComRoot Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1538 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the number of frames per second used by the current title
+    Function ComFramesPerSecond Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1573 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the current Domain
+    Function ComCurrentDomain Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1574 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the number of available titles
+    Function ComTitlesAvailable Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1575 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the number of available volumes
+    Function ComVolumesAvailable Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1576 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the current volume
+    Function ComCurrentVolume Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1577 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the current disc side
+    Function ComCurrentDiscSide Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1578 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the active state of the closed captioning service
+    Function ComCCActive Returns Boolean
+        Handle hDispatchDriver
+        Boolean retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1581 OLE_VT_BOOL to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the active state of the closed captioning service
+    Procedure Set ComCCActive Boolean value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1581 OLE_VT_BOOL to value
+    End_Procedure
+
+    // Gets the current closed captioning service
+    Function ComCurrentCCService Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1580 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets the current closed captioning service
+    Procedure Set ComCurrentCCService UInteger value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1580 OLE_VT_UI4 to value
+    End_Procedure
+
+    // Gets a Unique identifier for the current DVD-Video disk
+    Function ComUniqueID Returns String
+        Handle hDispatchDriver
+        String retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1584 OLE_VT_BSTR to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets ColorKey for the overlay
+    Function ComColorKey Returns UInteger
+        Handle hDispatchDriver
+        UInteger retVal
+        Get phDispatchDriver to hDispatchDriver
+        Get InvokeComMethod of hDispatchDriver 1585 OLE_VT_UI4 to retVal
+        Function_Return retVal
+    End_Function
+
+    // Gets ColorKey for the overlay
+    Procedure Set ComColorKey UInteger value
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Set ComProperty of hDispatchDriver 1585 OLE_VT_UI4 to value
+    End_Procedure
+End_Class
+
+// CLSID: {920F0DE3-91C5-11D2-828F-00C04FC99D4E}
+// IMediaBindStream Interface
+Class cComIMediaBindStream is a cComAutomationObject
+
+    Procedure ComLoadMoniker String llbszTransferContext String llbszUrl
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 2
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llbszTransferContext
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llbszUrl
+        Send InvokeComMethod to hDispatchDriver 8004 OLE_VT_VOID
+    End_Procedure
+End_Class
+
+// CLSID: {9C2263A0-3E3C-11D2-9BD3-204C4F4F5020}
+// IRadioServer Interface
+Class cComIRadioServer is a cComAutomationObject
+
+    Function ComBindToRadio String llwszRadio Returns Variant
+        Handle hDispatchDriver
+        Variant retVal
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llwszRadio
+        Get InvokeComMethod of hDispatchDriver 10 OLE_VT_DISPATCH to retVal
+        Function_Return retVal
+    End_Function
+
+    Procedure ComIsRadioExists String llwszRadio
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 1
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llwszRadio
+        Send InvokeComMethod to hDispatchDriver 21 OLE_VT_VOID
+    End_Procedure
+
+    Procedure ComLaunchStandardUrl String llbszUrl Variant llpBrowser
+        Handle hDispatchDriver
+        Get phDispatchDriver to hDispatchDriver
+        Send PrepareParams to hDispatchDriver 2
+        Send DefineParam to hDispatchDriver OLE_VT_BSTR llbszUrl
+        Send DefineParam to hDispatchDriver OLE_VT_UNKNOWN llpBrowser
+        Send InvokeComMethod to hDispatchDriver 22 OLE_VT_VOID
+    End_Procedure
+End_Class
+
+// CLSID: {8E718889-423F-11D2-876E-00A0C9082467}
+// IRadioServerControl Interface
+Class cComIRadioServerControl is a cComAutomationObject
+End_Class
+
+
